@@ -1,0 +1,17 @@
+[user]
+  name = Jason Rowland
+  email = jason@snowcapstudios.com
+
+# Perforce p4merge
+# https://www.perforce.com/product/components/perforce-visual-merge-and-diff-tools
+
+[difftool]
+  prompt = false
+[difftool "p4mergetool"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+[merge]
+	tool = p4mergetool
+[mergetool "p4mergetool"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$LOCAL $PWD/$REMOTE $PWD/$MERGED
+  trustExitCode = false
+  keepBackup = false
