@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+cp HOME/.gitconfig ~
+cp HOME/.zshrc ~
