@@ -3,6 +3,8 @@
 # Clone .dotfiles to home directory
 if [ -d "$HOME/.dotfiles" ]; then
   pushd $HOME/.dotfiles > /dev/null;
+  echo $PWD
+  echo git pull
   git pull
 else
   echo cd ~
