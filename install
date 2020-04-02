@@ -1,3 +1,27 @@
 #!/bin/sh -e
-#rsync -av HOME/ ~
-echo "Hello World!"
+
+# Clone .dotfiles to home directory
+if [ -d "$HOME/.dotfiles" ]; then
+  git pull
+else
+  echo cd ~
+  echo git clone git@github.com:jsonxr/.dotfiles.git
+fi
+
+echo
+echo "Syncing HOME to $HOME"
+echo
+pushd $HOME/.dotfiles > /dev/null;
+rsync -ahq HOME/ $HOME
+
+export installed=`cat ~/.zshrc|grep "source ~/.dotfiles/source.sh"`
+if [ "$installed" == "" ]; then
+  echo "source ~/.dotfiles/source.sh" >> ~/.zshrc
+fi
+
+echo
+echo "Run this command, or restart your terminal:"
+echo
+echo "    source ~/.zshrc"
+echo
+popd > /dev/null;
