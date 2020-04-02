@@ -1,4 +1,4 @@
-for file in */source.sh
-do
+for file in ~/.dotfiles/*/source.sh; do
+echo $file
   source $file
 done
