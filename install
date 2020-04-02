@@ -2,16 +2,17 @@
 
 # Clone .dotfiles to home directory
 if [ -d "$HOME/.dotfiles" ]; then
+  pushd $HOME/.dotfiles > /dev/null;
   git pull
 else
   echo cd ~
   echo git clone git@github.com:jsonxr/.dotfiles.git
+  pushd $HOME/.dotfiles > /dev/null;
 fi
 
 echo
 echo "Syncing HOME to $HOME"
 echo
-pushd $HOME/.dotfiles > /dev/null;
 rsync -ahq HOME/ $HOME
 
 export installed=`cat ~/.zshrc|grep "source ~/.dotfiles/source.sh"`
